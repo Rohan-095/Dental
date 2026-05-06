@@ -1,0 +1,8 @@
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3003
+- PID:          35256
+- Dir:          C:\Users\ROHAN\OneDrive\Desktop\dental-ai-receptionist
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 35256 /F to stop it.

@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030712;
+  --foreground: #F0F9FF;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-midnight: #06182d;
+  --color-midnight-deep: #050b15;
+  --color-glass: rgba(255, 255, 255, 0.1);
+  --color-mint: #dff7ee;
+  --color-skysoft: #e6f1ff;
+  --color-warmbeige: #f5efd9;
+  --font-sans: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Selection */
+::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: #e0f2fe;
+}
+
+.cinematic-sheen {
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.24) 48%,
+      transparent 61%,
+      transparent 100%
+    );
+  transform: translateX(-42%);
+  animation: cinematic-sheen 3.8s ease-in-out infinite;
+}
+
+@keyframes cinematic-sheen {
+  0% {
+    transform: translateX(-54%);
+  }
+  52% {
+    transform: translateX(54%);
+  }
+  100% {
+    transform: translateX(54%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-sheen {
+    animation: none;
+  }
+}

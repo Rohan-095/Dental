@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s /b *.config.*)",
+      "Bash(npm install *)",
+      "Bash(node -e \"require\\('framer-motion'\\); require\\('gsap'\\); require\\('lenis'\\); require\\('lucide-react'\\); console.log\\('all installed'\\)\")",
+      "Bash(npm run *)",
+      "Bash(Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue)",
+      "Bash(taskkill /F /IM node.exe)",
+      "PowerShell(Get-Process *)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\ROHAN\\\\OneDrive\\\\Desktop\\\\dental-ai-receptionist\\\\public\\\\videos\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\ROHAN\\\\OneDrive\\\\Desktop\\\\dental-ai-receptionist\\\\public\\\\images\")",
+      "Bash(Copy-Item \"C:\\\\Users\\\\ROHAN\\\\Downloads\\\\Create_a_premium_cinematic_3D_parallax_website_hero_video_from_this_dental_clinic_image.____Scene_st_seed234234784.mp4\" -Destination \"C:\\\\Users\\\\ROHAN\\\\OneDrive\\\\Desktop\\\\dental-ai-receptionist\\\\public\\\\videos\\\\hero-dental.mp4\")",
+      "Bash(Write-Host \"Done\")",
+      "Bash(Get-ChildItem *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
