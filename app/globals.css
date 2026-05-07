@@ -76,3 +76,34 @@ html {
     animation: none;
   }
 }
+
+/* ── Review marquee ─────────────────────────────────────────────────────── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-reverse {
+  animation: marquee-scroll 50s linear infinite reverse;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee-track,
+.marquee-wrapper:hover .marquee-track-reverse {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .marquee-track          { animation-duration: 30s; }
+  .marquee-track-reverse  { animation-duration: 36s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track-reverse { animation: none; }
+}

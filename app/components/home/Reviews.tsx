@@ -35,7 +35,7 @@ function ReviewCard({ review, index }: { review: typeof REVIEWS[0]; index: numbe
         </div>
         <div>
           <p className="text-slate-900 font-semibold text-sm">{review.name}</p>
-          <p className="text-slate-400 text-xs">{review.role}</p>
+          <p className="text-slate-400 text-xs">{review.service}</p>
         </div>
         {/* Google G */}
         <div className="ml-auto w-6 h-6 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center shrink-0">

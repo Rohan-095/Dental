@@ -7,7 +7,7 @@ import Services from './components/home/Services'
 import Experience from './components/home/Experience'
 import AIReceptionistPreview from './components/home/AIReceptionistPreview'
 import Gallery from './components/home/Gallery'
-import Reviews from './components/home/Reviews'
+import ReviewMarquee from './components/home/ReviewMarquee'
 import BookingSection from './components/home/BookingSection'
 import EmergencyCTA from './components/home/EmergencyCTA'
 import FinalCTA from './components/home/FinalCTA'
@@ -24,7 +24,7 @@ export default function Home() {
         <TrustStrip />
         <Experience />
         <AIReceptionistPreview />
-        <Reviews />
+        <ReviewMarquee />
         <BookingSection />
         <EmergencyCTA />
         <FinalCTA />
