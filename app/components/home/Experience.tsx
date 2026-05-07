@@ -99,15 +99,15 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="experience" className="relative bg-[#0C0D19] py-24 md:py-40 overflow-hidden">
+    <section id="experience" className="relative bg-[#0D1120] py-24 md:py-40 overflow-hidden">
       {/* Ambient glow */}
       <div
-        className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full opacity-[0.04] blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #3B82F6, transparent 70%)' }}
+        className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #4F7EF7, transparent 70%)' }}
       />
       <div
         className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-[0.04] blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #8B5CF6, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #2DD4BF, transparent 70%)' }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10" ref={ref}>
@@ -131,7 +131,7 @@ export default function Experience() {
             <span
               className="block mt-1"
               style={{
-                background: 'linear-gradient(135deg, #60A5FA, #34D399)',
+                background: 'linear-gradient(135deg, #60A5FA, #2DD4BF)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',

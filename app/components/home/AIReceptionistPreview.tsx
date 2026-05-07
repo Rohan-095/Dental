@@ -96,7 +96,7 @@ function ChatPanel({ inView }: { inView: boolean }) {
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         style={{
-          background: 'radial-gradient(560px circle at var(--cx, 50%) var(--cy, 50%), rgba(59,130,246,0.22), rgba(52,211,153,0.06) 50%, transparent 65%)',
+          background: 'radial-gradient(560px circle at var(--cx, 50%) var(--cy, 50%), rgba(79,126,247,0.22), rgba(45,212,191,0.06) 50%, transparent 65%)',
         }}
         aria-hidden="true"
       />
@@ -111,13 +111,13 @@ function ChatPanel({ inView }: { inView: boolean }) {
         <div className="relative">
           <div
             className="w-9 h-9 rounded-full flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}
+            style={{ background: 'linear-gradient(135deg, #4F7EF7, #2DD4BF)' }}
           >
             <Bot size={17} className="text-white" />
           </div>
           <div
             className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2"
-            style={{ background: '#34D399', borderColor: '#0C0D19' }}
+            style={{ background: '#2DD4BF', borderColor: '#07080F' }}
           />
         </div>
         <div>
@@ -150,7 +150,7 @@ function ChatPanel({ inView }: { inView: boolean }) {
               }`}
               style={
                 msg.from === 'user'
-                  ? { background: 'linear-gradient(135deg, #2563EB, #4F46E5)' }
+                  ? { background: 'linear-gradient(135deg, #4F7EF7, #3D6FEB)' }
                   : { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.07)' }
               }
             >
@@ -204,7 +204,7 @@ function ChatPanel({ inView }: { inView: boolean }) {
         </div>
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center text-white shrink-0"
-          style={{ background: 'linear-gradient(135deg, #2563EB, #4F46E5)' }}
+          style={{ background: 'linear-gradient(135deg, #4F7EF7, #3D6FEB)' }}
         >
           <ArrowRight size={15} />
         </div>
@@ -221,14 +221,14 @@ export default function AIReceptionistPreview() {
   return (
     <section
       id="ai-receptionist"
-      className="relative bg-[#08090F] py-24 md:py-40 overflow-hidden"
+      className="relative bg-[#07080F] py-24 md:py-40 overflow-hidden"
     >
       {/* Glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(59,130,246,0.06) 0%, rgba(139,92,246,0.04) 40%, transparent 70%)',
+            'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(79,126,247,0.07) 0%, rgba(45,212,191,0.03) 40%, transparent 70%)',
         }}
       />
 
@@ -257,7 +257,7 @@ export default function AIReceptionistPreview() {
               <span
                 className="block mt-1"
                 style={{
-                  background: 'linear-gradient(135deg, #60A5FA, #34D399)',
+                  background: 'linear-gradient(135deg, #60A5FA, #2DD4BF)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -308,8 +308,8 @@ export default function AIReceptionistPreview() {
               transition={{ duration: 0.55, delay: 0.26 }}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-white"
               style={{
-                background: 'linear-gradient(135deg, #2563EB, #4F46E5)',
-                boxShadow: '0 0 28px rgba(37,99,235,0.4)',
+                background: 'linear-gradient(135deg, #4F7EF7, #2DD4BF)',
+                boxShadow: '0 0 28px rgba(79,126,247,0.4)',
               }}
               whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(37,99,235,0.6)' }}
               whileTap={{ scale: 0.97 }}

@@ -24,12 +24,12 @@ export default function FinalCTA() {
       onMouseMove={handleMouseMove}
       id="book"
       className="relative py-24 md:py-32 overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #050611 0%, #0C0D19 40%, #07080F 100%)' }}
+      style={{ background: 'linear-gradient(160deg, #07080F 0%, #0D1120 45%, #07080F 100%)' }}
     >
       {/* Background glows */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[200px] sm:w-[600px] sm:h-[300px] pointer-events-none opacity-[0.08] blur-3xl rounded-full"
-        style={{ background: 'radial-gradient(ellipse, #3B82F6 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, #4F7EF7 0%, transparent 70%)' }}
       />
       <div
         className="absolute bottom-0 right-1/4 w-64 h-64 pointer-events-none opacity-[0.05] blur-3xl rounded-full"
@@ -91,7 +91,7 @@ export default function FinalCTA() {
           <span
             className="block mt-1"
             style={{
-              background: 'linear-gradient(135deg, #60A5FA 0%, #34D399 50%, #A78BFA 100%)',
+              background: 'linear-gradient(135deg, #60A5FA 0%, #2DD4BF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',

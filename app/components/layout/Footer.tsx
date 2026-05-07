@@ -24,7 +24,7 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-4">
               <div
                 className="w-8 h-8 rounded-xl flex items-center justify-center text-white font-bold text-sm"
-                style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}
+                style={{ background: 'linear-gradient(135deg, #4F7EF7, #2DD4BF)' }}
               >
                 A
               </div>

@@ -64,11 +64,11 @@ function MarqueeRow({
       {/* Edge fades */}
       <div
         className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 z-10"
-        style={{ background: 'linear-gradient(to right, #F7F5F0, transparent)' }}
+        style={{ background: 'linear-gradient(to right, #F0E9DC, transparent)' }}
       />
       <div
         className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 z-10"
-        style={{ background: 'linear-gradient(to left, #F7F5F0, transparent)' }}
+        style={{ background: 'linear-gradient(to left, #F0E9DC, transparent)' }}
       />
 
       <div
@@ -90,7 +90,7 @@ export default function ReviewMarquee() {
   const row2 = [...REVIEWS].reverse()
 
   return (
-    <section id="reviews" className="bg-[#F7F5F0] py-24 md:py-32 overflow-hidden">
+    <section id="reviews" className="bg-[#F0E9DC] py-24 md:py-32 overflow-hidden">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-5 md:px-10 text-center mb-14" ref={ref}>
         <motion.div

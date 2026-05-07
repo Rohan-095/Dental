@@ -46,7 +46,7 @@ function TreatmentCard({ item, index }: { item: typeof TREATMENTS[0]; index: num
           sizes="(min-width: 1024px) 33vw, 90vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,35,0.05),rgba(5,18,35,0.86))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,15,0.05),rgba(7,8,15,0.86))]" />
         <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 cinematic-sheen" />
         <button
           className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#06182d] shadow-xl transition-transform group-hover:scale-110"
@@ -71,7 +71,7 @@ export default function Gallery() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="results" className="relative overflow-hidden bg-[#051223] py-24 text-white md:py-32">
+    <section id="results" className="relative overflow-hidden bg-[#07080F] py-24 text-white md:py-32">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(127,216,203,0.18),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(226,207,168,0.14),transparent_32%)]" />
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10">
         <div ref={ref} className="mb-16 grid items-end gap-7 md:grid-cols-[0.9fr_1.1fr]">

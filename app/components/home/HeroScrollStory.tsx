@@ -147,7 +147,7 @@ export default function HeroScrollStory() {
                 className="pointer-events-none absolute right-[5%] top-[20%] h-[200px] w-[200px] md:h-[560px] md:w-[560px] rounded-full opacity-28"
                 style={{
                   zIndex: 3,
-                  background: 'radial-gradient(circle, rgba(52,211,153,0.75) 0%, transparent 68%)',
+                  background: 'radial-gradient(circle, rgba(45,212,191,0.65) 0%, transparent 68%)',
                   filter: 'blur(88px)',
                   transform: 'translate(var(--blob-x, 0px), var(--blob-y, 0px))',
                 }}
@@ -157,7 +157,7 @@ export default function HeroScrollStory() {
                 className="pointer-events-none absolute right-[15%] top-[5%] h-[160px] w-[160px] md:h-[440px] md:w-[440px] rounded-full"
                 style={{
                   zIndex: 3,
-                  background: 'radial-gradient(circle, rgba(96,165,250,0.7) 0%, transparent 68%)',
+                  background: 'radial-gradient(circle, rgba(79,126,247,0.65) 0%, transparent 68%)',
                   filter: 'blur(96px)',
                   opacity: 0.2,
                   transform: 'translate(calc(var(--blob-x, 0px) * -0.6), calc(var(--blob-y, 0px) * 0.4))',
@@ -230,7 +230,7 @@ export default function HeroScrollStory() {
                       <span
                         className="block mt-1"
                         style={{
-                          background: 'linear-gradient(135deg, #34d399 0%, #60a5fa 100%)',
+                          background: 'linear-gradient(135deg, #2DD4BF 0%, #60A5FA 100%)',
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                           backgroundClip: 'text',

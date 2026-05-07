@@ -23,8 +23,8 @@ const VARIANTS: Record<Variant, {
   base: string
 }> = {
   heroPrimary: {
-    style: { background: '#79F2C0', color: '#08110D', boxShadow: '0 0 28px rgba(121,242,192,0.30)' },
-    hover: { scale: 1.05, y: -2, boxShadow: '0 0 44px rgba(121,242,192,0.52)' },
+    style: { background: 'linear-gradient(135deg, #4F7EF7 0%, #2DD4BF 100%)', color: '#FFFFFF', boxShadow: '0 0 28px rgba(79,126,247,0.35)' },
+    hover: { scale: 1.05, y: -2, boxShadow: '0 0 48px rgba(79,126,247,0.58)' },
     tap: { scale: 0.97 },
     base: 'font-semibold',
   },
@@ -69,7 +69,7 @@ const VARIANTS: Record<Variant, {
     base: 'font-medium',
   },
   nav: {
-    style: { background: '#79F2C0', color: '#08110D' },
+    style: { background: 'linear-gradient(135deg, #4F7EF7 0%, #2DD4BF 100%)', color: '#FFFFFF' },
     hover: { scale: 1.04 },
     tap: { scale: 0.97 },
     base: 'font-semibold',
