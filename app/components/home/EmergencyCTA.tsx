@@ -42,12 +42,12 @@ export default function EmergencyCTA() {
         {!shouldReduce && (
           <>
             <motion.div
-              className="absolute h-64 w-64 rounded-full border border-orange-400/14"
+              className="absolute h-36 w-36 sm:h-64 sm:w-64 rounded-full border border-orange-400/14"
               animate={{ scale: [1, 1.8], opacity: [0.3, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: 'easeOut' }}
             />
             <motion.div
-              className="absolute h-64 w-64 rounded-full border border-orange-400/14"
+              className="absolute h-36 w-36 sm:h-64 sm:w-64 rounded-full border border-orange-400/14"
               animate={{ scale: [1, 1.8], opacity: [0.3, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: 'easeOut', delay: 1.2 }}
             />
@@ -72,7 +72,7 @@ export default function EmergencyCTA() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.08 }}
-          className="mb-5 text-4xl font-bold leading-tight text-white md:text-5xl"
+          className="mb-5 text-4xl font-bold leading-tight text-white md:text-6xl"
         >
           Tooth pain or swelling?
         </motion.h2>

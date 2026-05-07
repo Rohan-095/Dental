@@ -99,7 +99,7 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="experience" className="relative bg-[#0C0D19] py-24 md:py-32 overflow-hidden">
+    <section id="experience" className="relative bg-[#0C0D19] py-24 md:py-40 overflow-hidden">
       {/* Ambient glow */}
       <div
         className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full opacity-[0.04] blur-3xl pointer-events-none"
@@ -125,7 +125,7 @@ export default function Experience() {
             initial={{ opacity: 0, y: 22 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.08 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight"
+            className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight"
           >
             Dental visits,
             <span
@@ -148,6 +148,20 @@ export default function Experience() {
           >
             We removed every part of the dental visit that used to feel stressful.
           </motion.p>
+        </div>
+
+        {/* Desktop-only stat row */}
+        <div className="hidden md:grid md:grid-cols-3 gap-px mb-14 rounded-2xl overflow-hidden border border-white/[0.07]">
+          {[
+            { val: '200+', label: 'Happy patients' },
+            { val: '4.9', label: 'Google rating' },
+            { val: '60s', label: 'Avg. booking time' },
+          ].map((s) => (
+            <div key={s.val} className="bg-white/[0.03] px-8 py-6 text-center">
+              <p className="text-4xl font-bold text-white mb-1">{s.val}</p>
+              <p className="text-sm text-slate-500">{s.label}</p>
+            </div>
+          ))}
         </div>
 
         {/* Cards grid */}

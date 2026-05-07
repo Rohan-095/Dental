@@ -144,7 +144,7 @@ export default function HeroScrollStory() {
           {!shouldReduce && (
             <>
               <div
-                className="pointer-events-none absolute right-[5%] top-[20%] h-[560px] w-[560px] rounded-full opacity-28"
+                className="pointer-events-none absolute right-[5%] top-[20%] h-[200px] w-[200px] md:h-[560px] md:w-[560px] rounded-full opacity-28"
                 style={{
                   zIndex: 3,
                   background: 'radial-gradient(circle, rgba(52,211,153,0.75) 0%, transparent 68%)',
@@ -154,7 +154,7 @@ export default function HeroScrollStory() {
                 aria-hidden="true"
               />
               <div
-                className="pointer-events-none absolute right-[15%] top-[5%] h-[440px] w-[440px] rounded-full"
+                className="pointer-events-none absolute right-[15%] top-[5%] h-[160px] w-[160px] md:h-[440px] md:w-[440px] rounded-full"
                 style={{
                   zIndex: 3,
                   background: 'radial-gradient(circle, rgba(96,165,250,0.7) 0%, transparent 68%)',
@@ -165,7 +165,7 @@ export default function HeroScrollStory() {
                 aria-hidden="true"
               />
               <div
-                className="pointer-events-none absolute bottom-[10%] right-[10%] h-[380px] w-[380px] rounded-full"
+                className="pointer-events-none absolute bottom-[10%] right-[10%] h-[140px] w-[140px] md:h-[380px] md:w-[380px] rounded-full"
                 style={{
                   zIndex: 3,
                   background: 'radial-gradient(circle, rgba(167,139,250,0.65) 0%, transparent 68%)',

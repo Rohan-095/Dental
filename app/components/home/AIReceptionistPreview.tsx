@@ -72,7 +72,7 @@ function ChatPanel({ inView }: { inView: boolean }) {
       whileHover={{
         boxShadow: '0 40px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(59,130,246,0.25)',
       }}
-      className="group w-full max-w-sm mx-auto lg:mx-0 rounded-3xl overflow-hidden"
+      className="group w-full max-w-full sm:max-w-sm mx-auto lg:mx-0 rounded-3xl overflow-hidden"
       style={shouldReduce ? {
         background: 'rgba(255,255,255,0.05)',
         backdropFilter: 'blur(20px)',
@@ -221,7 +221,7 @@ export default function AIReceptionistPreview() {
   return (
     <section
       id="ai-receptionist"
-      className="relative bg-[#08090F] py-24 md:py-32 overflow-hidden"
+      className="relative bg-[#08090F] py-24 md:py-40 overflow-hidden"
     >
       {/* Glow */}
       <div
@@ -251,7 +251,7 @@ export default function AIReceptionistPreview() {
               initial={{ opacity: 0, y: 22 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.08 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight"
+              className="text-4xl md:text-6xl font-bold text-white mb-5 leading-tight"
             >
               Meet Ava, your
               <span

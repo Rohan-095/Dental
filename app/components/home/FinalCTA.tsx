@@ -28,7 +28,7 @@ export default function FinalCTA() {
     >
       {/* Background glows */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none opacity-[0.08] blur-3xl rounded-full"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[200px] sm:w-[600px] sm:h-[300px] pointer-events-none opacity-[0.08] blur-3xl rounded-full"
         style={{ background: 'radial-gradient(ellipse, #3B82F6 0%, transparent 70%)' }}
       />
       <div
