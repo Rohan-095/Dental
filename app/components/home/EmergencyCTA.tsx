@@ -24,7 +24,7 @@ export default function EmergencyCTA() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       id="emergency"
-      className="relative overflow-hidden bg-[#07080F] py-20 md:py-24"
+      className="relative overflow-hidden bg-[#050505] py-20 md:py-24"
     >
       {/* Static base glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(249,115,22,0.16),transparent_36%)]" />

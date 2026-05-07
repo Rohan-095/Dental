@@ -20,7 +20,9 @@
       "Bash(echo \"# Dental\")",
       "Bash(git branch *)",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(node -e \"require\\('lenis/react'\\); console.log\\('lenis/react OK'\\)\")",
+      "Bash(node -e \"const m = require\\('lenis/react'\\); console.log\\(Object.keys\\(m\\)\\)\")"
     ]
   }
 }

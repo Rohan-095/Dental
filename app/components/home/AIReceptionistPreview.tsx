@@ -221,7 +221,7 @@ export default function AIReceptionistPreview() {
   return (
     <section
       id="ai-receptionist"
-      className="relative bg-[#07080F] py-24 md:py-40 overflow-hidden"
+      className="relative bg-[#050505] py-24 md:py-40 overflow-hidden"
     >
       {/* Glow */}
       <div

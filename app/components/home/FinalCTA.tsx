@@ -24,7 +24,7 @@ export default function FinalCTA() {
       onMouseMove={handleMouseMove}
       id="book"
       className="relative py-24 md:py-32 overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #07080F 0%, #0D1120 45%, #07080F 100%)' }}
+      style={{ background: 'linear-gradient(160deg, #050505 0%, #0A0A0A 45%, #050505 100%)' }}
     >
       {/* Background glows */}
       <div

@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712;
-  --foreground: #F0F9FF;
+  /* Midnight & Ice palette */
+  --background: #050505;
+  --surface: #0A0A0A;
+  --foreground: #F7F7F7;
+  --accent-ice: #E0F2F1;
+  --accent-blue: #4F7EF7;
+  --accent-teal: #2DD4BF;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
+  --color-ice: var(--accent-ice);
   --color-midnight: #06182d;
   --color-midnight-deep: #050b15;
-  --color-glass: rgba(255, 255, 255, 0.1);
+  --color-glass: rgba(255, 255, 255, 0.06);
   --color-mint: #dff7ee;
   --color-skysoft: #e6f1ff;
   --color-warmbeige: #f5efd9;

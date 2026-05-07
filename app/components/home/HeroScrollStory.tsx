@@ -1,7 +1,7 @@
 ﻿'use client'
 
 import { useRef, useCallback, useEffect } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, useMotionValue, useSpring } from 'framer-motion'
 import { Sparkles, Star, CalendarCheck, ArrowRight, Bot } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -42,6 +42,26 @@ const SCENES = [
     showBadge: false,
   },
 ]
+
+function MagneticButton({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const sx = useSpring(x, { stiffness: 320, damping: 22 })
+  const sy = useSpring(y, { stiffness: 320, damping: 22 })
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return
+    const r = ref.current.getBoundingClientRect()
+    x.set((e.clientX - (r.left + r.width / 2)) * 0.32)
+    y.set((e.clientY - (r.top + r.height / 2)) * 0.32)
+  }
+  const onLeave = () => { x.set(0); y.set(0) }
+  return (
+    <motion.div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave} style={{ x: sx, y: sy }} className="inline-flex">
+      {children}
+    </motion.div>
+  )
+}
 
 export default function HeroScrollStory() {
   const shouldReduce = useReducedMotion()
@@ -276,10 +296,12 @@ export default function HeroScrollStory() {
                       transition={{ duration: 0.6, delay: 0.5 }}
                       className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
                     >
-                      <Button variant="heroPrimary" size="lg" href="#booking" className="w-full sm:w-auto">
-                        Book Appointment
-                        <ArrowRight size={16} />
-                      </Button>
+                      <MagneticButton>
+                        <Button variant="heroPrimary" size="lg" href="#booking" className="w-full sm:w-auto">
+                          Book Appointment
+                          <ArrowRight size={16} />
+                        </Button>
+                      </MagneticButton>
                       <Button variant="heroSecondary" size="lg" href="#ai-receptionist" className="w-full sm:w-auto">
                         <Bot size={16} className="text-blue-300" />
                         Ask AI Receptionist

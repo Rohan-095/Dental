@@ -23,10 +23,10 @@ const VARIANTS: Record<Variant, {
   base: string
 }> = {
   heroPrimary: {
-    style: { background: 'linear-gradient(135deg, #4F7EF7 0%, #2DD4BF 100%)', color: '#FFFFFF', boxShadow: '0 0 28px rgba(79,126,247,0.35)' },
-    hover: { scale: 1.05, y: -2, boxShadow: '0 0 48px rgba(79,126,247,0.58)' },
+    style: { background: '#E0F2F1', color: '#0B1A18', boxShadow: '0 0 28px rgba(224,242,241,0.22)' },
+    hover: { scale: 1.05, y: -2, boxShadow: '0 0 48px rgba(224,242,241,0.40)' },
     tap: { scale: 0.97 },
-    base: 'font-semibold',
+    base: 'font-semibold tracking-wide',
   },
   heroSecondary: {
     style: {
@@ -69,10 +69,10 @@ const VARIANTS: Record<Variant, {
     base: 'font-medium',
   },
   nav: {
-    style: { background: 'linear-gradient(135deg, #4F7EF7 0%, #2DD4BF 100%)', color: '#FFFFFF' },
+    style: { background: '#E0F2F1', color: '#0B1A18' },
     hover: { scale: 1.04 },
     tap: { scale: 0.97 },
-    base: 'font-semibold',
+    base: 'font-semibold tracking-wide',
   },
 }
 
