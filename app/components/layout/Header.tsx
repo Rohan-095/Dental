@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
-import { CLINIC_NAME, PHONE_RAW } from '@/data/clinic'
+import { CLINIC_NAME, PHONE, PHONE_RAW } from '@/data/clinic'
 import Button from '@/app/components/ui/Button'
 
 const treatmentLinks = [
@@ -111,7 +111,7 @@ export default function Header() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <a href={`tel:${PHONE_RAW}`} className="text-sm font-medium text-white/68 transition-colors hover:text-white">
-              (604) 555-0192
+              {PHONE}
             </a>
             <Button variant="nav" size="sm" href="#booking">
               Book
@@ -183,7 +183,7 @@ export default function Header() {
                 className="flex items-center justify-center gap-2 rounded-full border border-white/14 py-4 text-sm font-medium text-white/70"
                 onClick={() => setMobileOpen(false)}
               >
-                Call (604) 555-0192
+                Call {PHONE}
               </a>
             </motion.div>
           </motion.div>

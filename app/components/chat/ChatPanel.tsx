@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Bot, X, Send } from 'lucide-react'
+import { PHONE } from '@/data/clinic'
 
 const panelVariants = {
   hidden: { opacity: 0, scale: 0.88, y: 16 },
@@ -21,7 +22,7 @@ const QUICK_REPLIES = ['Book a cleaning', 'Emergency pain', 'Insurance question'
 
 const AI_RESPONSES: Record<string, string> = {
   'Book a cleaning': 'Great! 🦷 I can find the next available cleaning slot. Would morning or afternoon work better?',
-  'Emergency pain': "I'm sorry to hear that. For urgent dental pain please call us at (604) 555-0192. We keep same-day slots for emergencies.",
+  'Emergency pain': `I'm sorry to hear that. For urgent dental pain please call us at ${PHONE}. We keep same-day slots for emergencies.`,
   'Insurance question': 'We accept most major insurance plans with direct billing. Which provider are you with?',
   'New patient': 'Welcome! 😊 Your first visit includes a full exam, digital X-rays, and a treatment plan. Want me to book that?',
 }

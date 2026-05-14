@@ -4,6 +4,12 @@ import { useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from 'lucide-react'
+import { PHONE, PHONE_RAW, EMAIL, ADDRESS, HOURS } from '@/data/clinic'
+
+const HOURS_SUMMARY = HOURS
+  .filter((h) => h.time !== 'Closed')
+  .map((h) => `${h.day} ${h.time}`)
+  .join(', ')
 
 const SERVICES = [
   'General Checkup',
@@ -18,10 +24,10 @@ const SERVICES = [
 ]
 
 const CONTACT_INFO = [
-  { icon: Phone, label: 'Phone', value: '(604) 555-0192' },
-  { icon: Mail, label: 'Email', value: 'hello@avadental.ca' },
-  { icon: MapPin, label: 'Address', value: '123 West Georgia St, Vancouver, BC' },
-  { icon: Clock, label: 'Hours', value: 'Mon–Fri 8 AM–6 PM, Sat 9 AM–3 PM' },
+  { icon: Phone, label: 'Phone', value: PHONE },
+  { icon: Mail, label: 'Email', value: EMAIL },
+  { icon: MapPin, label: 'Address', value: ADDRESS },
+  { icon: Clock, label: 'Hours', value: HOURS_SUMMARY },
 ]
 
 export default function BookingSection() {
@@ -257,11 +263,11 @@ export default function BookingSection() {
                 Do not wait — call us directly or use Ava for immediate routing to same-day care.
               </p>
               <a
-                href="tel:+16045550192"
+                href={`tel:${PHONE_RAW}`}
                 className="mt-4 flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
               >
                 <Phone size={14} />
-                Call (604) 555-0192
+                Call {PHONE}
               </a>
             </div>
           </motion.div>
