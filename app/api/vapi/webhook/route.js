@@ -3,8 +3,30 @@ import { sendSMS, buildConfirmationSMS } from "@/lib/twilio";
 import { createCalendarEvent, checkAvailability } from "@/lib/calendar";
 import { sendAppointmentNotification } from "@/lib/gmail";
 
+// Vapi sends a shared secret in the x-vapi-secret header (configured in the
+// Vapi assistant's serverUrlSecret field). Verify before doing any work.
+function verifyVapiSecret(req) {
+  if (process.env.VAPI_WEBHOOK_SKIP_VERIFY === "true") return true;
+
+  const expected = process.env.VAPI_WEBHOOK_SECRET;
+  if (!expected) return false;
+
+  const provided = req.headers.get("x-vapi-secret") || "";
+  if (provided.length !== expected.length) return false;
+
+  let result = 0;
+  for (let i = 0; i < provided.length; i++) {
+    result |= provided.charCodeAt(i) ^ expected.charCodeAt(i);
+  }
+  return result === 0;
+}
+
 // Vapi calls this route for tool calls and call events
 export async function POST(req) {
+  if (!verifyVapiSecret(req)) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const body = await req.json();
   const { message } = body;
 
