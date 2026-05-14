@@ -1,9 +1,12 @@
 import SmoothScrollProvider from './components/SmoothScrollProvider'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import HeroMobile from './components/home/HeroMobile'
 import HeroScrollStory from './components/home/HeroScrollStory'
 import TrustStrip from './components/home/TrustStrip'
+import TrustAuthority from './components/home/TrustAuthority'
 import Services from './components/home/Services'
+import WhatToExpect from './components/home/WhatToExpect'
 import Experience from './components/home/Experience'
 import AIReceptionistPreview from './components/home/AIReceptionistPreview'
 import Gallery from './components/home/Gallery'
@@ -18,10 +21,17 @@ export default function Home() {
     <SmoothScrollProvider>
       <Header />
       <main>
-        <HeroScrollStory />
+        {/* Mobile-only hero — static, no GSAP. md:hidden via component itself. */}
+        <HeroMobile />
+        {/* Desktop scrub hero — hidden below md. */}
+        <div className="hidden md:block">
+          <HeroScrollStory />
+        </div>
         <Services />
+        <WhatToExpect />
         <Gallery />
         <TrustStrip />
+        <TrustAuthority />
         <Experience />
         <AIReceptionistPreview />
         <ReviewMarquee />

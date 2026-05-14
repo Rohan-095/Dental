@@ -55,7 +55,7 @@ export default function BookingSection() {
   }
 
   return (
-    <section id="booking" className="bg-[#fbfaf6] py-20 md:py-28">
+    <section id="booking" className="bg-[#F8F4EC] py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10" ref={ref}>
 
         {/* Header */}

@@ -1,7 +1,7 @@
 ﻿'use client'
 
 import { useRef, useCallback, useEffect } from 'react'
-import { motion, useReducedMotion, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Sparkles, Star, CalendarCheck, ArrowRight, Bot } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -31,7 +31,7 @@ const SCENES = [
   },
   {
     headline: ['Designed for busy', 'modern patients.'],
-    sub: 'Same-day slots, 24/7 AI receptionist, and instant answers â€” built around your schedule.',
+    sub: 'Same-day slots, 24/7 AI receptionist, and instant answers — built around your schedule.',
     showCtas: false,
     showBadge: false,
   },
@@ -42,26 +42,6 @@ const SCENES = [
     showBadge: false,
   },
 ]
-
-function MagneticButton({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  const sx = useSpring(x, { stiffness: 320, damping: 22 })
-  const sy = useSpring(y, { stiffness: 320, damping: 22 })
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return
-    const r = ref.current.getBoundingClientRect()
-    x.set((e.clientX - (r.left + r.width / 2)) * 0.32)
-    y.set((e.clientY - (r.top + r.height / 2)) * 0.32)
-  }
-  const onLeave = () => { x.set(0); y.set(0) }
-  return (
-    <motion.div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave} style={{ x: sx, y: sy }} className="inline-flex">
-      {children}
-    </motion.div>
-  )
-}
 
 export default function HeroScrollStory() {
   const shouldReduce = useReducedMotion()
@@ -88,7 +68,7 @@ export default function HeroScrollStory() {
     if (shouldReduce) return
     if (!outerRef.current || !stickyRef.current) return
 
-    // Skip scroll story on mobile â€” show static scene 1 only
+    // Skip scroll story on mobile — show static scene 1 only
     if (window.innerWidth < 768) return
 
     gsap.registerPlugin(ScrollTrigger)
@@ -96,7 +76,7 @@ export default function HeroScrollStory() {
     const scenes = sceneRefs.current.filter(Boolean) as HTMLDivElement[]
     if (scenes.length < SCENE_COUNT) return
 
-    // Set initial states â€” all scenes except first are hidden
+    // Set initial states — all scenes except first are hidden
     gsap.set(scenes.slice(1), { opacity: 0, y: 56, filter: 'blur(12px)' })
 
     const tl = gsap.timeline({
@@ -110,22 +90,22 @@ export default function HeroScrollStory() {
 
     tlRef.current = tl
 
-    // Scene 1 â†’ fade out
+    // Scene 1 → fade out
     tl.to(scenes[0], { opacity: 0, y: -56, filter: 'blur(12px)', duration: 0.7 }, 0.3)
 
-    // Scene 2 â†’ in â†’ out
+    // Scene 2 → in → out
     tl.fromTo(scenes[1], { opacity: 0, y: 56, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7 }, 0.7)
     tl.to(scenes[1], { opacity: 0, y: -56, filter: 'blur(12px)', duration: 0.7 }, 1.4)
 
-    // Scene 3 â†’ in â†’ out
+    // Scene 3 → in → out
     tl.fromTo(scenes[2], { opacity: 0, y: 56, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7 }, 1.7)
     tl.to(scenes[2], { opacity: 0, y: -56, filter: 'blur(12px)', duration: 0.7 }, 2.4)
 
-    // Scene 4 â†’ in â†’ out
+    // Scene 4 → in → out
     tl.fromTo(scenes[3], { opacity: 0, y: 56, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7 }, 2.7)
     tl.to(scenes[3], { opacity: 0, y: -56, filter: 'blur(12px)', duration: 0.7 }, 3.4)
 
-    // Scene 5 â†’ in (final, stays)
+    // Scene 5 → in (final, stays)
     tl.fromTo(scenes[4], { opacity: 0, y: 56, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8 }, 3.6)
 
     return () => {
@@ -160,45 +140,21 @@ export default function HeroScrollStory() {
           <div className="absolute inset-0 bg-black/62" style={{ zIndex: 1 }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/55" style={{ zIndex: 2 }} />
 
-          {/* Parallax blobs */}
+          {/* Parallax blob — Phase B: single teal blob (was 3) */}
           {!shouldReduce && (
-            <>
-              <div
-                className="pointer-events-none absolute right-[5%] top-[20%] h-[200px] w-[200px] md:h-[560px] md:w-[560px] rounded-full opacity-28"
-                style={{
-                  zIndex: 3,
-                  background: 'radial-gradient(circle, rgba(45,212,191,0.65) 0%, transparent 68%)',
-                  filter: 'blur(88px)',
-                  transform: 'translate(var(--blob-x, 0px), var(--blob-y, 0px))',
-                }}
-                aria-hidden="true"
-              />
-              <div
-                className="pointer-events-none absolute right-[15%] top-[5%] h-[160px] w-[160px] md:h-[440px] md:w-[440px] rounded-full"
-                style={{
-                  zIndex: 3,
-                  background: 'radial-gradient(circle, rgba(79,126,247,0.65) 0%, transparent 68%)',
-                  filter: 'blur(96px)',
-                  opacity: 0.2,
-                  transform: 'translate(calc(var(--blob-x, 0px) * -0.6), calc(var(--blob-y, 0px) * 0.4))',
-                }}
-                aria-hidden="true"
-              />
-              <div
-                className="pointer-events-none absolute bottom-[10%] right-[10%] h-[140px] w-[140px] md:h-[380px] md:w-[380px] rounded-full"
-                style={{
-                  zIndex: 3,
-                  background: 'radial-gradient(circle, rgba(167,139,250,0.65) 0%, transparent 68%)',
-                  filter: 'blur(80px)',
-                  opacity: 0.18,
-                  transform: 'translate(calc(var(--blob-x, 0px) * 0.5), calc(var(--blob-y, 0px) * -0.7))',
-                }}
-                aria-hidden="true"
-              />
-            </>
+            <div
+              className="pointer-events-none absolute right-[5%] top-[20%] h-[260px] w-[260px] md:h-[620px] md:w-[620px] rounded-full opacity-30"
+              style={{
+                zIndex: 3,
+                background: 'radial-gradient(circle, rgba(45,212,191,0.55) 0%, transparent 68%)',
+                filter: 'blur(96px)',
+                transform: 'translate(var(--blob-x, 0px), var(--blob-y, 0px))',
+              }}
+              aria-hidden="true"
+            />
           )}
 
-          {/* Cursor spotlight â€” inner */}
+          {/* Cursor spotlight — inner */}
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -207,7 +163,7 @@ export default function HeroScrollStory() {
             }}
             aria-hidden="true"
           />
-          {/* Cursor spotlight â€” outer halo */}
+          {/* Cursor spotlight — outer halo */}
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -296,12 +252,10 @@ export default function HeroScrollStory() {
                       transition={{ duration: 0.6, delay: 0.5 }}
                       className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
                     >
-                      <MagneticButton>
-                        <Button variant="heroPrimary" size="lg" href="#booking" className="w-full sm:w-auto">
-                          Book Appointment
-                          <ArrowRight size={16} />
-                        </Button>
-                      </MagneticButton>
+                      <Button variant="heroPrimary" size="lg" href="#booking" className="w-full sm:w-auto">
+                        Book Appointment
+                        <ArrowRight size={16} />
+                      </Button>
                       <Button variant="heroSecondary" size="lg" href="#ai-receptionist" className="w-full sm:w-auto">
                         <Bot size={16} className="text-blue-300" />
                         Ask AI Receptionist
@@ -333,7 +287,7 @@ export default function HeroScrollStory() {
                             <Star key={idx} size={11} className="fill-amber-400 text-amber-400" />
                           ))}
                         </div>
-                        <p className="mt-0.5 text-[11px] text-white/45">4.9 Â· 200+ happy patients</p>
+                        <p className="mt-0.5 text-[11px] text-white/45">4.9 · 200+ happy patients</p>
                       </div>
                     </motion.div>
                   )}
@@ -342,16 +296,14 @@ export default function HeroScrollStory() {
             ))}
           </div>
 
-          {/* Floating badges â€” desktop, scene 1 decor */}
+          {/* Floating badges — desktop, scene 1 decor */}
           <motion.div
             initial={shouldReduce ? false : { opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
             className="absolute right-8 top-1/3 z-20 hidden lg:block"
           >
-            <motion.div
-              animate={shouldReduce ? {} : { y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            <div
               className="rounded-2xl border border-white/14 bg-black/45 px-5 py-3.5 backdrop-blur-xl shadow-2xl"
             >
               <div className="flex items-center gap-2.5">
@@ -359,7 +311,7 @@ export default function HeroScrollStory() {
                 <span className="text-sm font-semibold text-white">4.9</span>
                 <span className="text-sm text-white/50">Google Rating</span>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -368,9 +320,7 @@ export default function HeroScrollStory() {
             transition={{ delay: 1.2, duration: 0.6 }}
             className="absolute right-8 top-1/2 z-20 hidden lg:block -translate-y-1/2"
           >
-            <motion.div
-              animate={shouldReduce ? {} : { y: [0, -8, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+            <div
               className="rounded-2xl border border-blue-400/22 bg-blue-400/[0.1] px-5 py-3 backdrop-blur-xl shadow-2xl"
             >
               <div className="flex items-center gap-2 text-blue-300">
@@ -378,7 +328,7 @@ export default function HeroScrollStory() {
                 <span className="text-sm font-semibold">Ava is online</span>
                 <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -387,16 +337,14 @@ export default function HeroScrollStory() {
             transition={{ delay: 1.4, duration: 0.6 }}
             className="absolute bottom-1/3 right-8 z-20 hidden lg:block"
           >
-            <motion.div
-              animate={shouldReduce ? {} : { y: [0, 12, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            <div
               className="rounded-2xl border border-emerald-400/25 bg-emerald-400/[0.12] px-5 py-3.5 backdrop-blur-xl shadow-2xl"
             >
               <div className="flex items-center gap-2.5 text-emerald-300">
                 <CalendarCheck size={14} />
                 <span className="text-sm font-semibold">Same-day booking</span>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Scroll indicator */}
@@ -407,13 +355,11 @@ export default function HeroScrollStory() {
             transition={{ delay: 1.8, duration: 0.5 }}
             aria-hidden="true"
           >
-            <motion.div
-              animate={shouldReduce ? {} : { y: [0, 9, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            <div
               className="flex h-8 w-5 items-start justify-center rounded-full border border-white/20 pt-1.5"
             >
               <div className="h-1.5 w-1 rounded-full bg-white/40" />
-            </motion.div>
+            </div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.22em]">Scroll</span>
           </motion.div>
         </section>

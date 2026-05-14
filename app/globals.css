@@ -21,16 +21,30 @@
   --color-mint: #dff7ee;
   --color-skysoft: #e6f1ff;
   --color-warmbeige: #f5efd9;
-  --font-sans: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+
+  /* Phase B — semantic surface tokens (the canonical palette) */
+  --color-surface-deep: #06182d;
+  --color-surface-base: #F8F4EC;
+  --color-surface-card: #FFFFFF;
+  --color-surface-warm: #F0E9DC;
+  --color-accent-primary: #2DD4BF;
+  --color-accent-warm: #FF8A4C;
+
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Phase A — display typeface on h1/h2 only */
+h1, h2 {
+  font-family: var(--font-display), "Fraunces", Georgia, serif;
+  letter-spacing: -0.02em;
 }
 
 html {

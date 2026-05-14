@@ -24,36 +24,19 @@ export default function EmergencyCTA() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       id="emergency"
-      className="relative overflow-hidden bg-[#050505] py-20 md:py-24"
+      className="relative overflow-hidden bg-[#06182d] border-t border-white/[0.06] py-24 md:py-32"
     >
       {/* Static base glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(249,115,22,0.16),transparent_36%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(249,115,22,0.12),transparent_38%)]" />
       {/* Cursor-follow orange glow */}
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            'radial-gradient(720px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(249,115,22,0.2), rgba(234,88,12,0.08) 48%, transparent 62%)',
+            'radial-gradient(720px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(249,115,22,0.18), rgba(234,88,12,0.06) 48%, transparent 62%)',
         }}
         aria-hidden="true"
       />
-
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
-        {!shouldReduce && (
-          <>
-            <motion.div
-              className="absolute h-36 w-36 sm:h-64 sm:w-64 rounded-full border border-orange-400/14"
-              animate={{ scale: [1, 1.8], opacity: [0.3, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeOut' }}
-            />
-            <motion.div
-              className="absolute h-36 w-36 sm:h-64 sm:w-64 rounded-full border border-orange-400/14"
-              animate={{ scale: [1, 1.8], opacity: [0.3, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeOut', delay: 1.2 }}
-            />
-          </>
-        )}
-      </div>
 
       <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-10" ref={ref}>
         <motion.div
@@ -83,7 +66,7 @@ export default function EmergencyCTA() {
           transition={{ duration: 0.55, delay: 0.14 }}
           className="mx-auto mb-9 max-w-lg text-lg leading-relaxed text-slate-300/76"
         >
-          If something feels urgent, do not wait. Call the clinic directly or start with Ava - we will route you to the right care quickly.
+          If something feels urgent, don&apos;t wait. Call the clinic directly or start with Ava — we&apos;ll route you to the right care, fast.
         </motion.p>
 
         <motion.div

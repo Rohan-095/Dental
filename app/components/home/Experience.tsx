@@ -99,7 +99,7 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="experience" className="relative bg-[#0A0A0A] py-24 md:py-40 overflow-hidden">
+    <section id="experience" className="relative bg-[#06182d] py-24 md:py-40 overflow-hidden">
       {/* Ambient glow */}
       <div
         className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full opacity-[0.05] blur-3xl pointer-events-none"

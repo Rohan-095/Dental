@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Star, Quote } from 'lucide-react'
+import { ArrowRight, Star, Quote } from 'lucide-react'
 import { REVIEWS } from '@/data/reviews'
 
 // ─── Single card ──────────────────────────────────────────────────────────────
@@ -41,9 +41,13 @@ function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
           </p>
           <p className="text-slate-400 text-xs truncate">{review.service}</p>
         </div>
-        {/* Google badge */}
-        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-100 bg-white shadow-sm">
-          <span className="text-[9px] font-bold text-blue-600">G</span>
+        {/* Google verification badge */}
+        <div
+          className="flex h-8 w-8 shrink-0 flex-col items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm"
+          title="Verified Google Review"
+          aria-label="Verified Google Review"
+        >
+          <span className="text-[11px] font-bold leading-none text-blue-600">G</span>
         </div>
       </div>
     </div>
@@ -144,6 +148,25 @@ export default function ReviewMarquee() {
         className="mt-5"
       >
         <MarqueeRow reviews={row2} reverse={true} />
+      </motion.div>
+
+      {/* Read-all link */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.45 }}
+        className="mx-auto mt-12 flex max-w-7xl justify-center px-5 md:px-10"
+      >
+        <a
+          href="https://www.google.com/maps"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-[#06182d] transition-colors hover:text-teal-700"
+        >
+          Read all 1,200+ verified Google reviews
+          <ArrowRight size={15} />
+        </a>
       </motion.div>
     </section>
   )

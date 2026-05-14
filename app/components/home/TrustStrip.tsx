@@ -40,7 +40,7 @@ function CountUp({ value, suffix, decimals = 0 }: { value: number; suffix: strin
 
 export default function TrustStrip() {
   return (
-    <section className="bg-[#F0E9DC] py-24 md:py-32">
+    <section className="bg-[#F8F4EC] py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="mb-12 max-w-3xl">
           <motion.p

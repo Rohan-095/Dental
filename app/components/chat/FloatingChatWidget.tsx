@@ -30,13 +30,13 @@ export default function FloatingChatWidget() {
         aria-label={status === 'closed' ? 'Open chat with Ava' : 'Close chat'}
         className="relative w-14 h-14 rounded-full flex items-center justify-center text-white overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
-          boxShadow: '0 6px 28px rgba(37,99,235,0.5)',
+          background: 'linear-gradient(135deg, #06182d 0%, #134E4A 55%, #2DD4BF 100%)',
+          boxShadow: '0 6px 28px rgba(45,212,191,0.42)',
         }}
         initial={shouldReduce ? false : { scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1.8, type: 'spring' as const, stiffness: 280, damping: 22 }}
-        whileHover={{ scale: 1.1, boxShadow: '0 8px 40px rgba(37,99,235,0.7)' }}
+        whileHover={{ scale: 1.1, boxShadow: '0 8px 40px rgba(45,212,191,0.6)' }}
         whileTap={{ scale: 0.95 }}
       >
         <AnimatePresence mode="wait">
@@ -63,20 +63,13 @@ export default function FloatingChatWidget() {
           )}
         </AnimatePresence>
 
-        {/* Pulse rings — only when closed */}
+        {/* Pulse ring — only when closed (single ring; Phase A motion trim) */}
         {status === 'closed' && !shouldReduce && (
-          <>
-            <motion.span
-              className="absolute inset-0 rounded-full border-2 border-blue-500/30 pointer-events-none"
-              animate={{ scale: [1, 1.65], opacity: [0.5, 0] }}
-              transition={{ duration: 2.2, repeat: Infinity }}
-            />
-            <motion.span
-              className="absolute inset-0 rounded-full border-2 border-violet-500/20 pointer-events-none"
-              animate={{ scale: [1, 1.65], opacity: [0.4, 0] }}
-              transition={{ duration: 2.2, repeat: Infinity, delay: 0.6 }}
-            />
-          </>
+          <motion.span
+            className="absolute inset-0 rounded-full border-2 border-teal-400/35 pointer-events-none"
+            animate={{ scale: [1, 1.65], opacity: [0.5, 0] }}
+            transition={{ duration: 2.4, repeat: Infinity }}
+          />
         )}
       </motion.button>
 
