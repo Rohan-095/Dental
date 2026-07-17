@@ -48,3 +48,14 @@ Behavior:
 - Browser hitting `/dashboard` gets a native Basic Auth prompt — no login UI required.
 
 Not in Phase 1: RLS on Supabase tables, real auth UI, `/api/leads` persistence. Those are Phases 2–4 in the security plan.
+
+## 2026-07-17
+
+**Real login page replaces Basic Auth; `/admin` now gated too**
+Added `/login` (`app/login/page.js`) plus `app/api/auth/login` and `app/api/auth/logout` route handlers, backed by a signed session cookie (`lib/session.js`, HMAC-SHA256 via Web Crypto, 12h TTL). `proxy.js` now checks that cookie instead of doing Basic Auth inline: page routes (`/dashboard`, `/admin`) redirect unauthenticated visitors to `/login?next=<path>`; API routes (`/api/appointments`, `/api/patients`) return a plain 401 JSON body. Credentials are still the same `DASHBOARD_BASIC_AUTH_USER` / `DASHBOARD_BASIC_AUTH_PASS` env vars (single shared staff login, no user table yet — consistent with the "start simple" rule in CLAUDE.md).
+
+`/admin` is now gated too — a reversal of the 2026-05-14 call to leave it public. See `docs/ADMIN_VS_DASHBOARD.md` for the rationale (it's still mock data, but a public demo dashboard was leaking UX/product details unnecessarily).
+
+New env var: `SESSION_SECRET` (random string, used to sign the session cookie). Added to `.env.local` for dev; must be set in prod too, or protected routes fail closed with a 503.
+
+Not done here: multiple staff accounts, password hashing/rotation, "remember me". Fine for a single-clinic MVP; revisit if this becomes multi-tenant.

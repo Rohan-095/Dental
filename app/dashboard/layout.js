@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoutButton from "./LogoutButton";
 
 const nav = [
   { label: "Overview",     href: "/dashboard" },
@@ -18,6 +19,9 @@ export default function DashboardLayout({ children }) {
             {n.label}
           </Link>
         ))}
+        <div className="mt-auto pt-4 border-t border-gray-800">
+          <LogoutButton />
+        </div>
       </aside>
       <main className="flex-1 p-8 overflow-auto">{children}</main>
     </div>

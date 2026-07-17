@@ -1,70 +1,43 @@
 import { NextResponse } from "next/server";
+import { SESSION_COOKIE, verifySessionToken } from "@/lib/session";
 
-const PROTECTED_PREFIXES = ["/dashboard", "/api/appointments", "/api/patients"];
+// Page routes: unauthenticated visitors are redirected to /login.
+const PAGE_PREFIXES = ["/dashboard", "/admin"];
+// API routes: unauthenticated requests get a plain 401 (no redirect, no HTML).
+const API_PREFIXES = ["/api/appointments", "/api/patients"];
 
-function unauthorized() {
-  return new NextResponse("Authentication required", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="dental-ai-receptionist", charset="UTF-8"',
-    },
-  });
+function matchesPrefix(pathname, prefixes) {
+  return prefixes.some((p) => pathname === p || pathname.startsWith(p + "/"));
 }
 
-function timingSafeEqual(a, b) {
-  if (a.length !== b.length) return false;
-  let result = 0;
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  }
-  return result === 0;
-}
-
-export function proxy(req) {
+export async function proxy(req) {
   const { pathname } = req.nextUrl;
 
-  const isProtected = PROTECTED_PREFIXES.some(
-    (p) => pathname === p || pathname.startsWith(p + "/"),
-  );
-  if (!isProtected) return NextResponse.next();
+  const isPage = matchesPrefix(pathname, PAGE_PREFIXES);
+  const isApi = matchesPrefix(pathname, API_PREFIXES);
+  if (!isPage && !isApi) return NextResponse.next();
 
-  const user = process.env.DASHBOARD_BASIC_AUTH_USER;
-  const pass = process.env.DASHBOARD_BASIC_AUTH_PASS;
-
-  // Fail closed: never expose protected routes if creds aren't configured.
-  if (!user || !pass) {
+  if (!process.env.SESSION_SECRET) {
     return new NextResponse("Auth not configured", { status: 503 });
   }
 
-  const header = req.headers.get("authorization") || "";
-  if (!header.startsWith("Basic ")) return unauthorized();
+  const token = req.cookies.get(SESSION_COOKIE)?.value;
+  const valid = await verifySessionToken(token);
+  if (valid) return NextResponse.next();
 
-  let decoded;
-  try {
-    decoded = atob(header.slice(6));
-  } catch {
-    return unauthorized();
+  if (isApi) {
+    return NextResponse.json({ error: "Authentication required" }, { status: 401 });
   }
 
-  const idx = decoded.indexOf(":");
-  if (idx < 0) return unauthorized();
-
-  const providedUser = decoded.slice(0, idx);
-  const providedPass = decoded.slice(idx + 1);
-
-  if (
-    timingSafeEqual(providedUser, user) &&
-    timingSafeEqual(providedPass, pass)
-  ) {
-    return NextResponse.next();
-  }
-
-  return unauthorized();
+  const loginUrl = new URL("/login", req.url);
+  loginUrl.searchParams.set("next", pathname);
+  return NextResponse.redirect(loginUrl);
 }
 
 export const config = {
   matcher: [
     "/dashboard/:path*",
+    "/admin/:path*",
     "/api/appointments/:path*",
     "/api/patients/:path*",
   ],

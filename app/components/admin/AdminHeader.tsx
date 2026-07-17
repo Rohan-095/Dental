@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Menu, ExternalLink } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Menu, ExternalLink, LogOut } from 'lucide-react'
 
 type Props = {
   title: string
@@ -9,6 +10,14 @@ type Props = {
 }
 
 export default function AdminHeader({ title, onMenuClick }: Props) {
+  const router = useRouter()
+
+  async function handleLogout() {
+    await fetch('/api/auth/logout', { method: 'POST' })
+    router.push('/login')
+    router.refresh()
+  }
+
   return (
     <header className="flex h-14 shrink-0 items-center justify-between border-b border-white/[0.06] bg-[#0A0B11] px-4 lg:px-6">
       <div className="flex items-center gap-3">
@@ -22,13 +31,22 @@ export default function AdminHeader({ title, onMenuClick }: Props) {
         <h1 className="text-sm font-semibold text-white">{title}</h1>
       </div>
 
-      <Link
-        href="/"
-        className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors"
-      >
-        View Website
-        <ExternalLink size={12} />
-      </Link>
+      <div className="flex items-center gap-4">
+        <Link
+          href="/"
+          className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors"
+        >
+          View Website
+          <ExternalLink size={12} />
+        </Link>
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors"
+        >
+          Log out
+          <LogOut size={12} />
+        </button>
+      </div>
     </header>
   )
 }

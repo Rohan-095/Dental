@@ -8,6 +8,8 @@ This project ships **two admin-style surfaces**. They have nearly identical purp
 
 Decision recorded 2026-05-14. See `DECISIONS.md` for the broader Phase 2 context.
 
+**Update 2026-07-17:** both surfaces are now gated behind the same `/login` page (see below). Gating `/admin` was a deliberate reversal of the original "do not gate it" call — it's still mock data, but a public demo dashboard was leaking product/UX details unnecessarily. `/admin` still has zero cross-imports with `/dashboard` and is still not wired to Supabase.
+
 ## Side-by-side
 
 | Aspect | `/admin/*` | `/dashboard/*` |
@@ -16,7 +18,7 @@ Decision recorded 2026-05-14. See `DECISIONS.md` for the broader Phase 2 context
 | Pages | overview, leads, appointments, conversations, triage, intakes, voice-calls, settings (8 total) | overview, appointments, calls, patients (4 total) |
 | Data source | `@/data/admin` (mock arrays) | `lib/supabase.getSupabaseAdmin()` — live service-role reads |
 | UI components | `AdminLayout`, `AdminSidebar`, `StatCard`, `DataTable`, `StatusBadge` — reusable design system | None shared; each page renders its own table |
-| Auth | None — public (mock data only, no PHI) | HTTP Basic Auth via `proxy.js` (Phase 1) |
+| Auth | `/login` session cookie via `proxy.js` (since 2026-07-17) | `/login` session cookie via `proxy.js` (Phase 1: Basic Auth; upgraded 2026-07-17) |
 | Mobile-ready | Built with the project's Tailwind + motion conventions | Plain, minimal styling |
 | Editing risk | Low (no real data, no auth) | Higher (live PHI, gated route) |
 
@@ -32,9 +34,9 @@ The two trees have **zero cross-imports**. Each is self-contained. Either can be
 
 1. **Build new operator features in `/dashboard`** — that's where the live data lives.
 2. **Lift design system components from `/admin` into `/dashboard` over time** — `StatCard`, `DataTable`, `StatusBadge`, `AdminLayout`, `AdminSidebar` are already reusable. Migrate them incrementally as `/dashboard` pages need polish.
-3. **Keep `/admin` mock-only.** Do not wire it to Supabase. Do not gate it. It's for demos and design iteration.
+3. **Keep `/admin` mock-only.** Do not wire it to Supabase. It's for demos and design iteration (now behind the same login as `/dashboard` — see the 2026-07-17 update above).
 4. **Do not delete `/admin` yet.** It still has business value for sales. A future Phase (likely Phase 5 or later) can decide whether to retire it once `/dashboard` has design parity.
 
-## Phase 1 protection scope
+## Protection scope
 
-`proxy.js` currently gates only `/dashboard/*` (and `/api/appointments/*`, `/api/patients/*`). `/admin` is intentionally **not** gated because it shows no real data. If `/admin` is ever wired to Supabase in the future, it must be added to `PROTECTED_PREFIXES` in `proxy.js` at the same time.
+`proxy.js` gates `/dashboard/*`, `/admin/*` (page routes — unauthenticated visitors are redirected to `/login`) and `/api/appointments/*`, `/api/patients/*` (API routes — unauthenticated requests get a 401). Both page prefixes share one login and one signed session cookie; there's no per-surface distinction beyond the route matcher.
